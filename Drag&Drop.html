@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Tailwind CSS Web App</title>
+    <style>
+      /* Additional styles specific to this web app */
+      .drop-area {
+        min-height: 200px;
+        border: 2px dashed #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex h-screen">
+      <!-- Left sidebar -->
+      <aside class="bg-gray-200 w-1/5 p-4">
+        <h2 class="text-lg font-semibold mb-4">Components</h2>
+        <ul>
+          <li class="mb-2" draggable="true" ondragstart="drag(event)">
+            <button
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Navbar
+            </button>
+          </li>
+          <li class="mb-2" draggable="true" ondragstart="drag(event)">
+            <button
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Footer
+            </button>
+          </li>
+          <!-- Add more components here -->
+        </ul>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 p-4">
+        <header class="bg-gray-800 text-white py-4">
+          <div class="container mx-auto px-4">
+            <h1 class="text-3xl">Welcome to My Web App</h1>
+          </div>
+        </header>
+
+        <div class="container mx-auto px-4 py-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 drop-area"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          >
+            <!-- Dropped components will appear here -->
+          </div>
+        </div>
+      </main>
+
+      <!-- Right sidebar -->
+      <aside class="bg-gray-200 w-1/5 p-4">
+        <h2 class="text-lg font-semibold mb-4">Options</h2>
+        <div class="mb-2">
+          <label for="dropdown" class="block mb-1">Dropdown:</label>
+          <select
+            id="dropdown"
+            class="border border-gray-300 px-2 py-1 rounded"
+          >
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+        <div>
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onclick="createComponent()"
+          >
+            Create
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      function allowDrop(event) {
+        event.preventDefault();
+      }
+
+      function drag(event) {
+        event.dataTransfer.setData("text", event.target.innerText);
+      }
+
+      function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var element = document.createElement("div");
+        element.innerText = data;
+        event.target.appendChild(element);
+      }
+
+      function createComponent() {
+        var dropdownValue = document.getElementById("dropdown").value;
+        var element = document.createElement("div");
+        element.innerText = "New Component: " + dropdownValue;
+        var dropArea = document.querySelector(".drop-area");
+        dropArea.appendChild(element);
+      }
+    </script>
+  </body>
+</html>

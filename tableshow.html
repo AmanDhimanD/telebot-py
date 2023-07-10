@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Toggle List Example</title>
+    <!-- Add Tailwind CSS CDN -->
+    <link
+      href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      .expand-sign:before {
+        content: "+";
+        display: inline-block;
+        margin-right: 5px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p class="expand-sign" onclick="toggleList('car')">
+        Show Car List (Total: <span id="carCount">0</span>)
+      </p>
+      <table id="carList" class="hidden bg-gray-100 p-2">
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Audi</td>
+          <td>5</td>
+          <td>$50,000</td>
+        </tr>
+        <tr>
+          <td>BMW</td>
+          <td>3</td>
+          <td>$40,000</td>
+        </tr>
+        <tr>
+          <td>Mercedes</td>
+          <td>7</td>
+          <td>$60,000</td>
+        </tr>
+        <tr>
+          <td>Tesla</td>
+          <td>2</td>
+          <td>$70,000</td>
+        </tr>
+        <tr id="additionalCarItems" class="hidden">
+          <td>Additional Item 1</td>
+          <td>4</td>
+          <td>$10,000</td>
+        </tr>
+        <tr id="additionalCarItems2" class="hidden">
+          <td>Additional Item 2</td>
+          <td>2</td>
+          <td>$15,000</td>
+        </tr>
+      </table>
+      <button
+        onclick="showMoreItems('car')"
+        class="mt-2 bg-blue-500 text-white px-4 py-2"
+      >
+        Show More
+      </button>
+    </div>
+
+    <div>
+      <p class="expand-sign" onclick="toggleList('bike')">
+        Show Bike List (Total: <span id="bikeCount">0</span>)
+      </p>
+      <table id="bikeList" class="hidden bg-gray-100 p-2">
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Yamaha</td>
+          <td>10</td>
+          <td>$5,000</td>
+        </tr>
+        <tr>
+          <td>Suzuki</td>
+          <td>8</td>
+          <td>$4,000</td>
+        </tr>
+        <tr>
+          <td>Kawasaki</td>
+          <td>6</td>
+          <td>$6,000</td>
+        </tr>
+        <tr>
+          <td>Honda</td>
+          <td>12</td>
+          <td>$3,000</td>
+        </tr>
+        <tr id="additionalBikeItems" class="hidden">
+          <td>Additional Item 1</td>
+          <td>4</td>
+          <td>$2,000</td>
+        </tr>
+        <tr id="additionalBikeItems2" class="hidden">
+          <td>Additional Item 2</td>
+          <td>6</td>
+          <td>$2,500</td>
+        </tr>
+      </table>
+      <button
+        onclick="showMoreItems('bike')"
+        class="mt-2 bg-blue-500 text-white px-4 py-2"
+      >
+        Show More
+      </button>
+    </div>
+
+    <div>
+      <p class="expand-sign" onclick="toggleList('activa')">
+        Show Activa List (Total: <span id="activaCount">0</span>)
+      </p>
+      <table id="activaList" class="hidden bg-gray-100 p-2">
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Activa 5G</td>
+          <td>15</td>
+          <td>$2,000</td>
+        </tr>
+        <tr>
+          <td>Activa 6G</td>
+          <td>12</td>
+          <td>$2,500</td>
+        </tr>
+        <tr>
+          <td>Activa 125</td>
+          <td>10</td>
+          <td>$3,000</td>
+        </tr>
+        <tr id="additionalActivaItems" class="hidden">
+          <td>Additional Item 1</td>
+          <td>5</td>
+          <td>$1,500</td>
+        </tr>
+        <tr id="additionalActivaItems2" class="hidden">
+          <td>Additional Item 2</td>
+          <td>7</td>
+          <td>$2,000</td>
+        </tr>
+      </table>
+      <button
+        onclick="showMoreItems('activa')"
+        class="mt-2 bg-blue-500 text-white px-4 py-2"
+      >
+        Show More
+      </button>
+    </div>
+
+    <div>
+      <p class="expand-sign" onclick="toggleList('fruit')">
+        Show Fruit List (Total: <span id="fruitCount">0</span>)
+      </p>
+      <table id="fruitList" class="hidden bg-gray-100 p-2">
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>20</td>
+          <td>$1</td>
+        </tr>
+        <tr>
+          <td>Orange</td>
+          <td>15</td>
+          <td>$0.75</td>
+        </tr>
+        <tr>
+          <td>Banana</td>
+          <td>30</td>
+          <td>$0.50</td>
+        </tr>
+        <tr id="additionalFruitItems" class="hidden">
+          <td>Additional Item 1</td>
+          <td>10</td>
+          <td>$1.50</td>
+        </tr>
+        <tr id="additionalFruitItems2" class="hidden">
+          <td>Additional Item 2</td>
+          <td>8</td>
+          <td>$1.25</td>
+        </tr>
+      </table>
+      <button
+        onclick="showMoreItems('fruit')"
+        class="mt-2 bg-blue-500 text-white px-4 py-2"
+      >
+        Show More
+      </button>
+    </div>
+
+    <script>
+      var carCount = 4;
+      var bikeCount = 4;
+      var activaCount = 3;
+      var fruitCount = 4;
+
+      function toggleList(listType) {
+        var list = document.getElementById(listType + "List");
+        list.classList.toggle("hidden");
+      }
+
+      function showMoreItems(listType) {
+        var additionalItems = document.getElementById(
+          "additional" + listType + "Items"
+        );
+        additionalItems.classList.toggle("hidden");
+
+        if (additionalItems.classList.contains("hidden")) {
+          updateTotalCount(listType, -1);
+        } else {
+          updateTotalCount(listType, 1);
+        }
+      }
+
+      function updateTotalCount(listType, count) {
+        var totalCountElement = document.getElementById(listType + "Count");
+        var totalCount = parseInt(totalCountElement.textContent) + count;
+        totalCountElement.textContent = totalCount;
+      }
+
+      // Update initial counts
+      document.getElementById("carCount").textContent = carCount;
+      document.getElementById("bikeCount").textContent = bikeCount;
+      document.getElementById("activaCount").textContent = activaCount;
+      document.getElementById("fruitCount").textContent = fruitCount;
+    </script>
+  </body>
+</html>
